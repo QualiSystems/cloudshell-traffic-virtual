@@ -19,7 +19,7 @@ class GetPortsFlow(object):
         :param str attribute_name:
         """
         for attribute in resource.ResourceAttributes:
-            if attribute.Name == attribute_name:
+            if attribute.Name.endswith(attribute_name):  # hack to support both 1st and 2nd Gen shells
                 return attribute.Value
 
     def _find_ports(self, resources, port_model):
